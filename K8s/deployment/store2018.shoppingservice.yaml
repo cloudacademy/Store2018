@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store2018-shoppingservice
+  labels:
+    app: shoppingservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: shoppingservice
+  template:
+    metadata:
+      labels:
+        app: shoppingservice
+    spec:
+      containers:
+      - name: shoppingservice
+        image: jeremycookdev/shoppingservice:latest
+        ports:
+        - containerPort: 80

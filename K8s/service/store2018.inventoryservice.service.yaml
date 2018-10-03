@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: store2018-inventoryservice
+  labels:
+    app: inventoryservice
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: inventoryservice
+  type: LoadBalancer

@@ -1,0 +1,63 @@
+version: '3.4'
+
+services:
+  accountservice:
+    image: jeremycookdev/accountservice:latest
+    build:
+      context: ./Services/AccountService
+      dockerfile: Dockerfile
+    container_name: accountservice
+    ports:
+     - "8081:80"
+    networks:
+      store2018network:
+        ipv4_address: 172.19.10.101
+
+  inventoryservice:
+    image: jeremycookdev/inventoryservice:latest
+    build:
+      context: ./Services/InventoryService
+      dockerfile: Dockerfile
+    container_name: inventoryservice
+    ports:
+     - "8082:80"
+    networks:
+      store2018network:
+        ipv4_address: 172.19.10.102
+
+  shoppingservice:
+    image: jeremycookdev/shoppingservice:latest
+    build:
+      context: ./Services/ShoppingService
+      dockerfile: Dockerfile
+    container_name: shoppingservice
+    ports:
+     - "8083:80"
+    networks:
+      store2018network:
+        ipv4_address: 172.19.10.103
+
+  store2018:
+    image: jeremycookdev/store2018:latest
+    environment:
+        ACCOUNT_SERVICE_API_BASE: http://172.19.10.101/api
+        INVENTORY_SERVICE_API_BASE: http://172.19.10.102/api
+        SHOPPING_SERVICE_API_BASE: http://172.19.10.103/api
+    build:
+      context: ./Store2018
+      dockerfile: Dockerfile
+    container_name: store2018
+    ports:
+     - "8000:80"
+    networks:
+      store2018network:
+        ipv4_address: 172.19.10.100
+
+networks:
+  store2018network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.19.0.0/16
+  

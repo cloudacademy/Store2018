@@ -1,0 +1,19 @@
+image: atlassian/default-image:2
+
+pipelines:
+  branches:
+    # master is the production branch.
+    master:
+    - step:
+        name: Docker Build
+        caches:
+          - docker
+        services:
+          - docker
+        script:
+          - whoami
+          - pwd
+          - ls -la
+          - chmod u+x ./BuildScripts/build.sh
+          - ./BuildScripts/build.sh
+          - echo "finished building!"

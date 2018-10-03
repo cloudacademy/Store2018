@@ -1,0 +1,45 @@
+﻿@model Store2018.Models.Commerce
+
+<!-- Page Features -->
+<div class="row text-center">
+    @foreach (var product in Model.Products)
+    {
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+            <div class="card-body">
+                <h4 class="card-title">@Html.DisplayFor(modelItem => product.Name)</h4>
+                <div class="card-text">@Html.DisplayFor(modelItem => product.Sku)</div>
+                <div class="card-text">$@Html.DisplayFor(modelItem => product.RegularPrice)</div>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+<!-- /.row -->
+<hr />
+<h3>Cart:</h3>
+<table class="table table-borderless">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Sku</th>
+            <th scope="col">Discount Price</th>
+            <th scope="col">Regular Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cartItem in Model.Cart.Items)
+        {
+        <tr>
+            <th scope="row">@Html.DisplayFor(modelItem => cartItem.Name)</th>
+            <td>@Html.DisplayFor(modelItem => cartItem.Sku)</td>
+            <td>@Html.DisplayFor(modelItem => cartItem.DiscountPrice)</td>
+            <td>@Html.DisplayFor(modelItem => cartItem.RegularPrice)</td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store2018-accountservice
+  labels:
+    app: accountservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: accountservice
+  template:
+    metadata:
+      labels:
+        app: accountservice
+    spec:
+      containers:
+      - name: accountservice
+        image: jeremycookdev/accountservice:latest
+        ports:
+        - containerPort: 80
+

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store2018
+  labels:
+    app: store2018
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: store2018
+  template:
+    metadata:
+      labels:
+        app: store2018
+    spec:
+      containers:
+      - name: store2018
+        image: jeremycookdev/store2018:latest
+        ports:
+        - containerPort: 80
+        env:
+          - name: ACCOUNT_SERVICE_API_BASE
+            value: http://store2018-accountservice/api
+          - name: INVENTORY_SERVICE_API_BASE
+            value: http://store2018-inventoryservice/api
+          - name: SHOPPING_SERVICE_API_BASE
+            value: http://store2018-shoppingservice/api
