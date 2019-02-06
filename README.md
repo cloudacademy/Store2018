@@ -1,7 +1,5 @@
 # Refactoring a Monolithic .Net Application to use Cloud Services
 
-https://cloudacademy.com/learning-paths/dotnet-monolithic-to-microservices-migration-284/
-
 ![Alt text](Docs/CloudAcademyLP.png?raw=true "CloudAcademy LP: Refactoring a Monolithic .Net Application to use Cloud Services")(https://cloudacademy.com/learning-paths/dotnet-monolithic-to-microservices-migration-284/)
 
 In this advanced learning path we take a legacy monolithic .Net application and re-architect it to use a combination of cloud services to increase scalability, performance, and manageability. With over 9 hours of practical developer focused content, this blend of instructional videos and hands on labs will empower you and your teams to begin refactoring, and modernizing legacy applications to make use of cloud microservices.  
